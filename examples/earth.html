@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+      <script defer src="../src/ThreeHTML.js" type="module"></script>
+
+
+      <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+        body{
+            height:100vh;
+            width:100vw;
+        }
+
+
+        section {
+            position:fixed;
+            top:0;
+            left:50%;
+            transform: translateX(-50%);
+            background:rgba(255,255,255,0.1);
+            color:white;
+            padding:8px;
+            box-shadow:2px 2px 8px black;
+        }
+
+
+        three-scene{
+            width:100%;
+            height:100%;
+            --environment:url('textures/HDR_white_local_star_2k.hdr');
+            --environmentrotation-x:0;
+            --environmentrotation-y:-90deg;
+            --environmentrotation-z:0;
+        }
+
+
+        three-perspectivecamera{
+            --active:true;
+            --position-z:8;
+        }
+
+        #sunLight{
+            --position-x:5;
+            --intensity:5;
+        }
+
+        #earth{
+            animation:spin 30s infinite linear;
+        }
+
+        #earth>three-material{
+            --map:url('textures/2k_earth_daymap.jpg');
+            --normalmap:url('textures/2k_earth_normal_map.png');
+            --roughnessmap:url('textures/2k_earth_roughness.jpg');
+        }
+
+
+        #clouds{
+            animation:clouds 240s infinite linear;
+        }
+
+        #clouds>three-material{
+            --alphamap:url('textures/2k_earth_clouds.jpg');
+            
+        }
+
+
+        #moon{
+            --position-x:2;
+            
+        }
+
+        #moon three-material{
+            --map:url('textures/moon_color.jpg');
+            --bumpmap:url('textures/moon_bump.jpg');
+        }
+
+        #moonRotationWrapper{
+            animation:spin 10s linear infinite;
+        }
+
+
+        @keyframes spin{
+            0%{
+                --rotation-y:0deg;
+            }
+
+            100%{
+                --rotation-y:360deg;
+            }
+        }
+
+        @keyframes clouds{
+            0%{
+                --rotation-x:0deg;
+                --rotation-y:0deg;
+            }
+
+            100%{
+                --rotation-x:360deg;
+                --rotation-y:640deg;
+            }
+        }
+
+      </style>
+
+
+</head>
+<body>
+<section>
+    <h1>THREE-HTML library démo</h1>
+    <p>Simple primitive and css animations</p>
+    <p>use your mouse to move/rotate the scene</p>
+</section>
+
+    <three-scene>
+        <three-perspectivecamera controls="Orbit"></three-perspectivecamera>
+        <three-light type="directional" id="sunLight"></three-light>
+
+        <three-primitive geometry="Sphere" id="earth" widthSegments="64" heightSegments="32">
+            <three-material type="Physical"></three-material>
+
+            <three-primitive geometry="Sphere" id="clouds" widthSegments="64" heightSegments="32" radius="1.02">
+                <three-material type="Physical"></three-material>
+            </three-primitive>
+            
+        </three-primitive>
+
+        <three-group id="moonRotationWrapper">
+            <three-primitive geometry="Sphere" id="moon" radius="0.2"  widthSegments="64" heightSegments="32">
+                <three-material type="Physical"></three-material>
+            </three-primitive>
+        </three-group>
+    </three-scene>
+</body>
+</html>
