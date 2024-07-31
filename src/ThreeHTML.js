@@ -6,9 +6,3 @@ import { Material } from "./threehtml/material.js";
 import { Primitive } from "./threehtml/primitive.js";
 import { Model } from "./threehtml/model.js";
 import { KeyBoard } from "./threehtml/controls/Keyboard.js";
-/*
-
-
-import { Mesh } from "./classes/mesh.js";
-import {Material} from "./classes/material.js"
-*/
