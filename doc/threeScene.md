@@ -17,9 +17,5 @@ All block type element's styles are avaible, the render canvas will adapte it's 
 
 ## Attributes
 
-- ❌ src
-    Load a scene from a file and put it in the world
-- ❌ assets
-    Load a scene from a file but keep it in memory (not visible)
-
-<small>❌ => not implemented yet but will be soon</small>
+-  src
+    Load a scene from a file
