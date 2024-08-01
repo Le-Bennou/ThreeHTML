@@ -14,16 +14,13 @@ import { PropertiesExtractor } from "./PropertiesExtractor.js"
 import * as THREE from 'three'
 
 export class CssListener extends HTMLElement{
- #one = false
+
     #liveEdit = false
     #animationCss = false
     #mixer = null
     #animationFactor = 1
     #clock = new THREE.Clock()
     oldCssValue = {}
-
-    #needsUpdate = false
-
 
     static cssProperties = []
     static timeUnit = {
@@ -32,8 +29,17 @@ export class CssListener extends HTMLElement{
     }
     isThreeElement = true;
 
+
     constructor(){
         super()
+
+        if(CSS.supports("selector(:state(checked))")){
+            this._internals = this.attachInternals();
+           }else{
+             console.warn('Votre Navigateur ne supporte pas les custom states')
+           }
+
+
         this.#defineCustomProperties()
         this.#createMutationObserver()
         this.#checkAnimation()
@@ -73,6 +79,8 @@ export class CssListener extends HTMLElement{
         }
        this.#defineParentScene()
        this.cssUpdate()
+
+       this.three._DOM = this
     }
 
     //quand l'élément change de parent
@@ -106,7 +114,7 @@ export class CssListener extends HTMLElement{
        // this.cssUpdate() //DEBUG
         if(!this.parentScene) return     
         this.parentScene.addElementToUdpateList(this)
-        this.#needsUpdate = true
+       
     }
 
 
@@ -207,3 +215,4 @@ export class CssListener extends HTMLElement{
         this.#checkAnimation(needUpdateAfter)
     }
 }
+

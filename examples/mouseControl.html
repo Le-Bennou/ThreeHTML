@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+      <script defer src="../src/ThreeHTML.js" type="module"></script>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+
+
+        three-scene{
+            position:absolute;
+            left:20%;
+            top:15%;
+            width:800px;
+            height:400px;
+        }
+
+
+        three-perspectivecamera{
+            --active:true;
+            --position-z:5;
+        }
+
+        #box1{
+            --position-x : 2;
+        }
+
+        #box3{
+            --position-x : -2;
+        }
+
+        [geometry="Box"] three-material{
+            --color:red;
+        }
+
+        [geometry="Box"]:state(hover) three-material{
+            --color:green;
+        }
+
+
+        [geometry="Box"]:state(active) three-material{
+            --color:purple;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+    <three-scene>
+        <three-perspectivecamera></three-perspectivecamera>
+
+
+        <controls-mouse>
+            <three-primitive geometry="Box" id="box1">
+                <three-material type="Basic"></three-material>
+            </three-primitive>
+
+            <three-primitive geometry="Box" id="box2">
+                <three-material type="Basic"></three-material>
+            </three-primitive>
+
+
+            <three-primitive geometry="Box" id="box3">
+                <three-material type="Basic"></three-material>
+            </three-primitive>
+    
+        </controls-mouse>
+       
+    </three-scene>
+</body>
+</html>

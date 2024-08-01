@@ -108,6 +108,11 @@ export class Scene extends CssListener{
         return this.#renderer.domElement
     }
 
+
+    get activeCamera(){
+        return this.#activeCamera
+    }
+
     set activeCamera(val){
         this.#activeCamera = val
         this.changeSize()
