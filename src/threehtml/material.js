@@ -220,7 +220,6 @@ export class Material extends CssListener {
             const matName = this.getAttribute('type')
             
             this.three = new THREE[`Mesh${matName}Material`]()
-
             this.constructor.cssProperties.forEach(prop=>{
                 this.dontKeepOldCssValue(prop)
             })

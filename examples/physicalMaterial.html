@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBR Maps</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" integrity="sha512-6yoqbrcLAHDWAdQmiRlHG4+m0g/CT/V9AGyxabG8j7Jk8j3r3K6due7oqpiRMZqcYe9WM2gPcaNNxnl2ux+3tA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+      <script defer src="../src/ThreeHTML.js" type="module"></script>
+
+    <style>
+
+        section{
+            display:grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap:24px;
+        }
+
+        section div{
+            padding:12px;
+            background :lightgrey;
+            box-shadow:0 0 3px black;
+        }
+        
+        three-scene{
+            width:100%;
+            height:400px;
+            --environment:url('textures/rosendal_plains_2_2k.hdr');
+            --backgroundblurriness:0.8;
+            --environmentintensity:0.6;
+            animation:spinEnv 10s infinite;
+        }
+        
+
+        three-perspectivecamera{
+            --active:true;
+            --position-z:2;
+        }
+
+        three-primitive{
+            animation:rotation 30s infinite linear;
+        }
+
+
+        @keyframes rotation{
+            0%{
+                --rotation-y : 0deg;
+                --rotation-x : 0deg;
+            }
+
+            100%{
+                --rotation-y:360deg;
+                --rotation-x : 640deg;
+            }
+        }
+
+
+        .map{
+            --map:url('textures/ganges_river_pebbles_diff_1k.jpg')
+        }
+
+        .normalmap{
+            --normalmap:url('textures/ganges_river_pebbles_nor_1k.png');
+
+        }
+
+        .aomap{
+            --aomap:url('textures/ganges_river_pebbles_ao_1k.jpg');
+            
+} 
+
+    </style>
+
+
+
+</head>
+<body>
+    <h1>Uses of Physical Material Map's</h1>
+    <p>The physical material needs multiple texture to mimic the "real" comportement of litght when boucne on an object</p>
+<section>
+    <div>
+        <h2>Color Map</h2>
+        <p>the albedo (or difffuse) map is the colors of the object<br>
+                
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --map:url('paht/to/image');
+}
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Box">
+                <three-material type="Physical" class="map"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+
+    <div>
+        <h2>Normal Map</h2>
+        <p>This map add some shadows to creat the illusion of bumpiness on the object<br>
+                the "--normalscale" property let you to exagerate or smooth the effect (default is  1)
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --normalmap:url('paht/to/image');
+            --normalscale:1;
+}           
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Box">
+                <three-material type="Physical" class="map normalmap"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+
+    <div>
+        <h2>AO Map</h2>
+        <p>This map add some shadows on obstructed area of the object<br>
+                the "--aomapintensity" property let you to exagerate or smooth the effect (default is  1)
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --aomap:url('paht/to/image');
+            --aomapintensity:1;
+}           
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Box">
+                <three-material type="Physical" class="map normalmap aomap"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+</section>
+
+
+
+
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

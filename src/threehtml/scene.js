@@ -40,7 +40,7 @@ export class Scene extends CssListener{
 
             "--environmentintensity"(val){
                 //syntax:<number>
-                //initialValue :0
+                //initialValue :1
             
 
             this.three.environmentIntensity =parseFloat(val)
