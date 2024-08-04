@@ -1,0 +1,38 @@
+three-scene{
+    position:absolute;
+    left:50%;
+    transform: translateX(-50%);
+    top:15%;
+    width:800px;
+    height:400px;
+}
+
+
+three-perspectivecamera{
+    --active:true;
+    --position-z:5;
+}
+
+#box1{
+    --position-x : 2;
+}
+
+#box3{
+    --position-x : -2;
+}
+
+[geometry="Box"] three-material{
+    --color:red;
+}
+
+
+
+/*mouse interaction */
+[geometry="Box"]:state(hover) three-material{
+    --color:green;
+}
+
+
+[geometry="Box"]:state(active) three-material{
+    --color:purple;
+}

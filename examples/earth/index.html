@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+
+      <script  src="../../src/ThreeHTML.js" type="module"></script>
+
+
+
+
+
+</head>
+<body>
+<section>
+    <h1>THREE-HTML library démo</h1>
+    <p>Simple primitive and css animations</p>
+    <p>use your mouse to move/rotate the scene</p>
+</section>
+
+    <three-scene>
+        <three-perspectivecamera controls="Orbit"></three-perspectivecamera>
+        <three-light type="directional" id="sunLight"></three-light><!--beacuase envmap dont produce shadows-->
+
+        <three-primitive geometry="Sphere" id="earth" widthSegments="64" heightSegments="32">
+            <three-material type="Physical"></three-material>
+
+            <three-primitive geometry="Sphere" id="clouds" widthSegments="64" heightSegments="32" radius="1.02">
+                <three-material type="Physical"></three-material>
+            </three-primitive>
+            
+        </three-primitive>
+
+        <three-group id="moonRotationWrapper">
+            <three-primitive geometry="Sphere" id="moon" radius="0.2"  widthSegments="64" heightSegments="32">
+                <three-material type="Physical"></three-material>
+            </three-primitive>
+        </three-group>
+    </three-scene>
+</body>
+</html>

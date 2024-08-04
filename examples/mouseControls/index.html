@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
     <script type="importmap">
         {
           "imports": {
@@ -13,56 +15,19 @@
           }
         }
       </script>
-      <script defer src="../src/ThreeHTML.js" type="module"></script>
-
-    <style>
-        *{
-            margin:0;
-            padding:0;
-        }
 
 
-        three-scene{
-            position:absolute;
-            left:20%;
-            top:15%;
-            width:800px;
-            height:400px;
-        }
-
-
-        three-perspectivecamera{
-            --active:true;
-            --position-z:5;
-        }
-
-        #box1{
-            --position-x : 2;
-        }
-
-        #box3{
-            --position-x : -2;
-        }
-
-        [geometry="Box"] three-material{
-            --color:red;
-        }
-
-        [geometry="Box"]:state(hover) three-material{
-            --color:green;
-        }
-
-
-        [geometry="Box"]:state(active) three-material{
-            --color:purple;
-        }
-
-
-    </style>
+      <script defer src="../../src/ThreeHTML.js" type="module"></script>
 
 
 </head>
 <body>
+
+    <section>
+        <h1>THREE-HTML library démo</h1>
+        <p>Mouse controls</p>
+        <p>click and hover the object with the pointer</p>
+    </section>
     <three-scene>
         <three-perspectivecamera></three-perspectivecamera>
 

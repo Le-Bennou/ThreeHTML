@@ -1,0 +1,47 @@
+
+
+/* the 3d scene */
+three-scene {
+    width: 100%;
+    height: 100%;
+    --environment: url('../0-ressources/textures/rosendal_plains_2_2k.hdr'); /* environment texture used for background and ligtting */
+    --backgroundblurriness: 1; /* blur the background */
+    --environmentintensity: 0.3; /*intensity of the ligthing by the environement texture */
+}
+
+
+/*animate the 3d model when it's not moving*/
+#perso {
+    animation: idle 5s infinite;
+}
+
+
+/*make the opening of the doors smooth */
+.doors {
+    transition: --rotation-y 1s;
+}
+
+/*when a element has the class ".open" rotate it 
+the buttons toggle the class "open"
+*/
+.doors.open {
+    --rotation-y: 100deg;
+}
+
+
+
+/* keyboard control comportment */
+controls-keyboard:state(ArrowLeft) #perso {
+    --rotate-y: 1deg; 
+}
+
+controls-keyboard:state(ArrowRight) #perso {
+    --rotate-y: -1deg;
+}
+
+controls-keyboard:state(ArrowUp) #perso {
+    --translate-z: 0.006;
+    animation: walk 1.5s infinite forwards; /* make the walk animation */
+}
+
+

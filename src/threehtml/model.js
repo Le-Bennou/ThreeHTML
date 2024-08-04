@@ -73,7 +73,6 @@ export class Model extends Object3D{
             let a = an.clone()
 
             if(!THREE.AnimationClip.findByName(this.three.animations,a.name)){
-                console.log(`Animtion "${a.name}" ajoutée`)
                 this.three.animations.push(a)
             }
             

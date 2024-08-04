@@ -115,7 +115,14 @@ export class Object3D extends CssListener{
         let u = uniqid('obj',true)
         this.setAttribute('u',u)
 
-        document.querySelector('#test').innerHTML += `
+
+        let defaultCSSFromFile = document.querySelector('#defaultCSS')
+        if(!defaultCSSFromFile){
+            defaultCSSFromFile = document.createElement('style')
+            document.head.appendChild(defaultCSSFromFile)
+        }
+
+        defaultCSSFromFile.innerHTML += `
             [u="${u}"]{
                 --position-x : ${this.three.position.x};
                 --position-y : ${this.three.position.y};

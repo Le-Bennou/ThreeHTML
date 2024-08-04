@@ -13,6 +13,12 @@ export class Material extends CssListener {
         return new THREE.TextureLoader().load(src)
     }
 
+    "--wireframe"(val){
+        // syntax:*
+        // initialValue : false
+
+        this.three.wireframe = val == "true"
+    }
 
 
     "--color"(val) {
@@ -153,6 +159,22 @@ export class Material extends CssListener {
         //this.three.needsUpdate = true
     }
 
+    "--displacementmap"(val){
+        // syntax:<image>
+       // initialValue : url("")
+       if (val == 'url("")') {
+           this.three.displacementMap = null
+       }
+       this.three.displacementMap = Material.loadImage(val.replace(/url\(['|"](.*?)['|"]\)/gi, "$1"))
+   }
+
+
+   "--displacementscale"(val) {
+    // syntax:<number>
+    // initialValue : 1
+    this.three.displacementScale = parseFloat(val)
+    //this.three.needsUpdate = true
+}
 
     "--envMap"(val) {
         // syntax:<image>|<color>
@@ -182,6 +204,27 @@ export class Material extends CssListener {
         // initialValue : 1
         this.three.envMapIntensity = parseFloat(val)
         this.three.needsUpdate = true
+    }
+
+
+    "--metalnessmap"(val) {
+        // syntax:<image>
+        // initialValue : url("")
+        if (val == 'url("")') {
+            this.three.metalnessMap = null
+        }
+        this.three.transparent = true
+        this.three.metalnessMap = Material.loadImage(val.replace(/url\(['|"](.*?)['|"]\)/gi, "$1"))
+
+        this.three.needsUpdate = true
+    }
+
+
+    "--metalness"(val) {
+        // syntax:<number>
+        // initialValue : 0
+        this.three.metalness = parseFloat(val)
+        //this.three.needsUpdate = true
     }
 
 

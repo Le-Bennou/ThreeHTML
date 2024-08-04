@@ -1,0 +1,105 @@
+ three-scene {
+     width: 400px;
+     height: 400px;
+     border-radius: 5px;
+     --environment: url('../0-ressources/textures/rosendal_plains_2_2k.hdr');
+     --backgroundblurriness: 0.8;
+     --environmentintensity: 0.6;
+     animation: spinEnv 10s infinite;
+     overflow: hidden;
+     border: 5px solid white;
+ }
+
+ .small three-scene {
+     width: 100px;
+     height: 100px;
+ }
+
+
+
+ three-perspectivecamera {
+     --active: true;
+     --position-z: 2;
+ }
+
+ three-primitive {
+     animation: rotation 30s infinite linear;
+
+ }
+
+
+ @keyframes rotation {
+     0% {
+         --rotation-y: 0deg;
+
+     }
+
+     100% {
+         --rotation-y: 360deg;
+
+     }
+ }
+
+
+ .map {
+     --map: url('../0-ressources/textures/ganges_river_pebbles_diff_1k.jpg')
+ }
+
+ .normalmap {
+     --normalmap: url('../0-ressources/textures/ganges_river_pebbles_nor_1k.png');
+
+ }
+
+ .aomap {
+     --aomap: url('../0-ressources/textures/ganges_river_pebbles_ao_1k.jpg');
+
+ }
+
+ .roughnessmap {
+     --roughnessmap: url('../0-ressources/textures/ganges_river_pebbles_rough_1k.png');
+
+ }
+
+ .displacement {
+     --displacementmap: url('../0-ressources/textures/ganges_river_pebbles_disp_1k.png');
+     --displacementscale: 0.1;
+ }
+
+ .red {
+     --color: GOLD;
+ }
+
+ .r0 {
+     --roughness: 0;
+
+ }
+
+ .r1 {
+     --roughness: 0.25;
+
+ }
+
+ .r2 {
+     --roughness: 0.5;
+
+ }
+
+ .r3 {
+     --roughness: 0.75;
+
+ }
+
+ .r4 {
+     --roughness: 1;
+
+ }
+
+ .m0 {
+     --metalness: 0;
+
+ }
+
+ .m1 {
+     --metalness: 1;
+
+ }

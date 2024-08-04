@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PBR Maps</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/monokai.css">
+
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.10.0/highlight.min.js" integrity="sha512-6yoqbrcLAHDWAdQmiRlHG4+m0g/CT/V9AGyxabG8j7Jk8j3r3K6due7oqpiRMZqcYe9WM2gPcaNNxnl2ux+3tA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+      <script defer src="../../src/ThreeHTML.js" type="module"></script>
+
+
+
+
+</head>
+<body class="grid">
+    <h1>Uses of Physical Material Map's</h1>
+    <p>The physical material needs multiple texture to mimic the "real" comportement of litght when boucne on an object</p>
+    <h2>Base property</h2>
+    <p>The principals properies are:</p>
+    <pre><code class="language-css">three-material{
+        --color:&lt;Color&gt;;
+        --roughness:&lt;Number&gt;;
+        --metalness:&lt;Number&gt;;
+}
+    </code></pre>
+    <article class="small">
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0;
+    --metalness:0;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r0 m0"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.25;
+    --metalness:0;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r1 m0"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.5;
+    --metalness:0;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r2 m0"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.75;
+    --metalness:0;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r3 m0"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:1;
+    --metalness:0;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r4 m0"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+
+
+
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0;
+    --metalness:1;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r0 m1"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.25;
+    --metalness:1;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r1 m1"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.5;
+    --metalness:1;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r2 m1"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:0.75;
+    --metalness:1;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r3 m1"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+
+        <div>
+            <pre><code class="language-css">three-material{
+    --color:gold;
+    --rougness:1;
+    --metalness:1;
+}</code></pre>
+            <three-scene>
+                <three-perspectivecamera controls="Orbit" ></three-perspectivecamera>
+                <three-primitive geometry="Sphere" radius="0.6">
+                    <three-material type="Physical" class="red r4 m1"></three-material>
+                </three-primitive>
+    
+            </three-scene>
+        </div>
+       
+
+    </article>
+
+    <h2>The maps</h2>
+    <article>
+    <div>
+       <h3>Color Map</h3>
+        <p>the albedo (or difffuse) map is the colors of the object<br>
+                
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --map:url('paht/to/image');
+}
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Sphere" radius="0.6">
+                <three-material type="Physical" class="map"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+
+    <div>
+        <h3>Normal Map</h3>
+        <p>This map add some shadows to creat the illusion of bumpiness on the object<br>
+                the "--normalscale" property let you to exagerate or smooth the effect (default is  1)
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --normalmap:url('paht/to/image');
+            --normalscale:1;
+}           
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Sphere" radius="0.6">
+                <three-material type="Physical" class="map normalmap"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+
+    <div>
+        <h3>AO Map</h3>
+        <p>This map add some shadows on obstructed area of the object<br>
+                the "--aomapintensity" property let you to exagerate or smooth the effect (default is  1)
+        </p>
+                
+        <pre><code class="language-css">three-material{
+            --aomap:url('paht/to/image');
+            --aomapintensity:1;
+}           
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Sphere" radius="0.6">
+                <three-material type="Physical" class="map normalmap aomap"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+
+    <div>
+        <h3>Roughness Map</h3>
+        <p>A grayscale image, black => rought, white => shiny</p>
+                
+                
+        <pre><code class="language-css">three-material{
+            --roughnessmap:url('paht/to/image');
+            
+}           
+        </code></pre>
+
+        <three-scene>
+            <three-perspectivecamera ></three-perspectivecamera>
+            <three-primitive geometry="Sphere" radius="0.6">
+                <three-material type="Physical" class="map normalmap aomap roughnessmap"></three-material>
+            </three-primitive>
+
+        </three-scene>
+    </div>
+</article>
+
+<div>
+    <h3>Displacement Map</h3>
+    <p>A grayscale image, black => down, white => up</p>
+    <p>Since it displace the vertices of the mesh it needs a detailed model</p>
+    <p>the "--displacementscale" property let you to exagerate or smooth the effect (default is  1)</p>
+    <pre><code class="language-css">three-material{
+        --displacementmap:url('paht/to/image');
+        --displacementscale: 0.1;
+        
+}           
+    </code></pre>
+
+    <three-scene style="width:800px; height:800px;">
+        <three-perspectivecamera controls="Orbit"></three-perspectivecamera>
+        <three-primitive geometry="Sphere" radius="0.6" widthsegments="1024" heightsegments="512">
+            <three-material type="Physical" class="map normalmap aomap roughnessmap displacement"></three-material>
+        </three-primitive>
+
+    </three-scene>
+</div>
+
+
+    <script>hljs.highlightAll();</script>
+</body>
+</html>

@@ -139,7 +139,6 @@ export class Scene extends CssListener{
         const loader = new GLTFLoader()
         loader.load(src,gltf=>{
             this.three.add(gltf.scene.clone(true))
-            console.log(this.three)
             this.three.traverse(o=>{
                 if(o.type=="PerspectiveCamera"){
                     this.#activeCamera = o

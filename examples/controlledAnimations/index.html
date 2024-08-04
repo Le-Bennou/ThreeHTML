@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../common.css">
+    <link rel="stylesheet" href="style.css">
+
+    <!-- paths to threejs library and sub module (needed)-->
+    <script type="importmap">
+        {
+          "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@v0.167.0/build/three.module.js",
+            "controls/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/controls/",
+            "loaders/": "https://cdn.jsdelivr.net/npm/three@v0.167.0/examples/jsm/loaders/"
+          }
+        }
+      </script>
+ 
+      <!-- link the THreeHTML library-->
+    <script  src="../../src/ThreeHTML.js" type="module"></script>
+
+
+</head>
+
+<body>
+    <section>
+        <h1>THREE-HTML library démo</h1>
+        <p>Load Scene, load model, play 3d files animations with controls</p>
+        <p>use your mouse to move/rotate the scene, <br> arrow keys to move the personage <br> and the buttons to
+            open/close the doors</p>
+        <p>Model and animation from <a href="mixamo.com">Mixamo</a></p>
+    </section>
+
+    <div id="buttons">
+        <!--Adding the class ".open" to the door object when a button is clicked-->
+        <button onclick="document.querySelector('#door1').classList.toggle('open')">Open/Close Door 1</button>
+        <button onclick="document.querySelector('#door2').classList.toggle('open')">Open/Close Door 2</button>
+        <button onclick="document.querySelector('#door3').classList.toggle('open')">Open/Close Door 3</button>
+    </div>
+
+    <three-scene src="../0-ressources/3d_files/decor.glb"><!--Load the file -->
+
+        <!--to make css and attribute applyed to the object in the file
+            we have to link it by their name (present in the file)
+        -->
+        <three-perspectivecamera controls="Orbit" name="Camera"></three-perspectivecamera><!-- adding orbit control to the camera of the file -->
+        
+        <!-- link the doors to make them openable see button and css-->
+        <three-group name="door" id="door1" class="doors"></three-group>
+        <three-group name="door001" id="door2" class="doors"></three-group>
+        <three-group name="door002" id="door3" class="doors"></three-group>
+
+        <!--control the behavior of the guy (see CSS)-->
+        <controls-keyboard>
+            <three-model src="../0-ressources/3d_files/perso.glb" id="perso"></three-model>
+        </controls-keyboard>
+
+    </three-scene>
+
+
+
+
+</body>
+
+</html>

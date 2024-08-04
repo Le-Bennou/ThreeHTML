@@ -1,0 +1,78 @@
+ 
+        three-scene{
+            width:100%;
+            height:100%;
+            --environment:url('../0-ressources/textures/HDR_white_local_star_2k.hdr');
+            --environmentrotation-x:0;
+            --environmentrotation-y:-90deg;
+            --environmentrotation-z:0;
+        }
+
+
+        three-perspectivecamera{
+            --active:true;
+            --position-z:8;
+        }
+
+        #sunLight{
+            --position-x:5;
+            --intensity:5;
+        }
+
+        #earth{
+            animation:spin 30s infinite linear;
+        }
+
+        #earth>three-material{
+            --map:url('../0-ressources/textures/2k_earth_daymap.jpg');
+            --normalmap:url('../0-ressources/textures/2k_earth_normal_map.png');
+            --roughnessmap:url('../0-ressources/textures/2k_earth_roughness.jpg');
+        }
+
+
+        #clouds{
+            animation:clouds 240s infinite linear;
+        }
+
+        #clouds>three-material{
+            --alphamap:url('../0-ressources/textures/2k_earth_clouds.jpg');
+            
+        }
+
+
+        #moon{
+            --position-x:2;
+            
+        }
+
+        #moon three-material{
+            --map:url('../0-ressources/textures/moon_color.jpg');
+            --bumpmap:url('../0-ressources/textures/moon_bump.jpg');
+        }
+
+        #moonRotationWrapper{
+            animation:spin 10s linear infinite;
+        }
+
+
+        @keyframes spin{
+            0%{
+                --rotation-y:0deg;
+            }
+
+            100%{
+                --rotation-y:360deg;
+            }
+        }
+
+        @keyframes clouds{
+            0%{
+                --rotation-x:0deg;
+                --rotation-y:0deg;
+            }
+
+            100%{
+                --rotation-x:360deg;
+                --rotation-y:640deg;
+            }
+        }
