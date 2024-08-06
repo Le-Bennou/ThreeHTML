@@ -1,7 +1,7 @@
-# ThreeHTML
+# ThreeHTML (W.I.P.)
 
 ## Description
-**ThreeHTML** is a library to use ThreeJs only with HTML tags and CSS rules.
+**ThreeHTML** Allow you to use the 3D librarie ThreeJS with only HTML tags and CSS rules, no JS needed!!
 
 ## Usage
 
